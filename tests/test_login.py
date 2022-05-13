@@ -1,5 +1,7 @@
 from pageObjects.index import PageObjects
+from playwright.sync_api import expect
 import pytest
+import re
 
 auth = pytest.users[1]
 locked_out_auth = pytest.users[2]
@@ -21,11 +23,11 @@ def setup(page):
 def test_valid_login(setup):
     page, login_page = setup
     login_page.login(auth['username'], auth['password'])
-    assert "inventory.html" in page.url
+    expect(page).to_have_url(re.compile(".*inventory"))
 
 @pytest.mark.parametrize("username,password,expected_error", test_data)
 def test_invalid_login(setup, username, password, expected_error):
     _, login_page = setup
     login_page.login(username, password)
-    assert login_page.error_message.is_visible()
-    assert login_page.error_message.text_content() == expected_error
+    expect(login_page.error_message).to_be_visible()
+    expect(login_page.error_message).to_have_text(expected_error)
