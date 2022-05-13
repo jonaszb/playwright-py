@@ -1,4 +1,4 @@
-from pageObjects.login_page import LoginPage
+from pageObjects.index import PageObjects
 import pytest
 
 auth = pytest.users[1]
@@ -12,20 +12,20 @@ test_data = [("", "", "Epic sadface: Username is required"),
 
 @pytest.fixture
 def setup(page):
-    loginPage = LoginPage(page)
-    loginPage.navigate()
-    yield page, loginPage
+    login_page = PageObjects.login_page(page)
+    login_page.navigate()
+    yield page, login_page
     page.close()
 
 
 def test_valid_login(setup):
-    page, loginPage = setup
-    loginPage.login(auth['username'], auth['password'])
+    page, login_page = setup
+    login_page.login(auth['username'], auth['password'])
     assert "inventory.html" in page.url
 
 @pytest.mark.parametrize("username,password,expected_error", test_data)
 def test_invalid_login(setup, username, password, expected_error):
-    _, loginPage = setup
-    loginPage.login(username, password)
-    assert loginPage.error_message.is_visible()
-    assert loginPage.error_message.text_content() == expected_error
+    _, login_page = setup
+    login_page.login(username, password)
+    assert login_page.error_message.is_visible()
+    assert login_page.error_message.text_content() == expected_error
