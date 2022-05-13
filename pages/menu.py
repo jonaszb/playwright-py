@@ -1,4 +1,4 @@
-from pageObjects.base import Base
+from pages.base import Base
 
 
 class Menu(Base):

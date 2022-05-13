@@ -1,4 +1,4 @@
-from pageObjects.index import PageObjects
+from pages.index import PageObjects
 from playwright.sync_api import expect
 import pytest
 import re

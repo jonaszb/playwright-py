@@ -1,7 +1,7 @@
-from pageObjects.inventory_page import InventoryPage
-from pageObjects.login_page import LoginPage
-from pageObjects.menu import Menu
-from pageObjects.base import Base
+from pages.inventory_page import InventoryPage
+from pages.login_page import LoginPage
+from pages.menu import Menu
+from pages.base import Base
 
 class PageObjects:
 

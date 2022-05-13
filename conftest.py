@@ -1,7 +1,6 @@
 import pytest
 import os
-from playwright.sync_api import sync_playwright
-from pageObjects.index import PageObjects
+from pages.index import PageObjects
 
 
 def pytest_configure():
