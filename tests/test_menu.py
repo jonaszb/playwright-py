@@ -8,15 +8,6 @@ test_data = ["/inventory.html", "/inventory-item.html?id=1", "/cart.html",
 menu_rows = ["ALL ITEMS", "LOGOUT", "ABOUT", "RESET APP STATE"]
 
 
-@pytest.fixture
-def setup(page):
-    login_page = PageObjects.login_page(page)
-    login_page.navigate()
-    login_page.login(auth["username"], auth["password"])
-    yield page
-    page.close()
-
-
 def test_no_nav_menu_on_login(page):
     login_page = PageObjects.login_page(page)
     login_page.navigate()
@@ -24,8 +15,8 @@ def test_no_nav_menu_on_login(page):
 
 
 @pytest.mark.parametrize("url", test_data)
-def test_after_login(setup, url):
-    page = setup
+def test_after_login(authpage, url):
+    page = authpage
     base_page = PageObjects.base(page)
     menu = PageObjects.menu(page)
     base_page.navigate(url)
