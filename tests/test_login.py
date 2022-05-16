@@ -1,4 +1,4 @@
-from pages.index import PageObjects
+from pages.index import pages
 from playwright.sync_api import expect
 import pytest
 import re
@@ -14,7 +14,7 @@ test_data = [("", "", "Epic sadface: Username is required"),
 
 @pytest.fixture
 def setup(page):
-    login_page = PageObjects.login_page(page)
+    login_page = pages["login"](page)
     login_page.navigate()
     yield page, login_page
     page.close()

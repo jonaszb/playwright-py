@@ -1,4 +1,4 @@
-from pages.index import PageObjects
+from pages.index import pages
 from playwright.sync_api import expect
 import pytest
 
@@ -9,7 +9,7 @@ menu_rows = ["ALL ITEMS", "LOGOUT", "ABOUT", "RESET APP STATE"]
 
 
 def test_no_nav_menu_on_login(page):
-    login_page = PageObjects.login_page(page)
+    login_page = pages["login"](page)
     login_page.navigate()
     expect(login_page.menu_icon).not_to_be_visible()
 
@@ -17,8 +17,9 @@ def test_no_nav_menu_on_login(page):
 @pytest.mark.parametrize("url", test_data)
 def test_after_login(authpage, url):
     page = authpage
-    base_page = PageObjects.base(page)
-    menu = PageObjects.menu(page)
+    base_page = pages["base"](page)
+    menu = pages["menu"](page)
+    
     base_page.navigate(url)
     expect(base_page.menu_icon).to_be_visible()
     expect(menu.root_element).not_to_be_visible()

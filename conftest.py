@@ -1,6 +1,6 @@
 import pytest
 import os
-from pages.index import PageObjects
+from pages.index import pages
 
 
 def pytest_configure():
@@ -14,7 +14,7 @@ def pytest_configure():
 @pytest.fixture
 def authpage(page):
     auth = pytest.users[1]
-    login_page = PageObjects.login_page(page)
+    login_page = pages["login"](page)
     login_page.navigate()
     login_page.login(auth["username"], auth["password"])
     yield page
