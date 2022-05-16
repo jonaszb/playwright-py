@@ -1,9 +1,7 @@
-from pages.index import PageObjects
 from playwright.sync_api import expect
 import pytest
 import re
 
-pages = PageObjects()
 auth = pytest.users[1]
 locked_out_auth = pytest.users[2]
 # Test data for invalid login attempts: (username, password, expected_error)
