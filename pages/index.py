@@ -3,9 +3,9 @@ from pages.login_page import LoginPage
 from pages.menu import Menu
 from pages.base import Base
 
-pages = {
-    "base": Base,
-    "login": LoginPage,
-    "inventory": InventoryPage,
-    "menu": Menu
-}
+class PageObjects:
+    def __init__(self):
+        self.base = Base
+        self.login = LoginPage
+        self.inventory = InventoryPage
+        self.menu = Menu

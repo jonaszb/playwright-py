@@ -1,6 +1,6 @@
 import pytest
 import os
-from pages.index import pages
+from pages.index import PageObjects
 
 
 def pytest_configure():
@@ -12,10 +12,14 @@ def pytest_configure():
     pytest.base_url = os.getenv('BASE_URL') or "https://www.saucedemo.com"
 
 @pytest.fixture
-def authpage(page):
+def authpage(page, page_objects):
     auth = pytest.users[1]
-    login_page = pages["login"](page)
+    login_page = page_objects.login(page)
     login_page.navigate()
     login_page.login(auth["username"], auth["password"])
     yield page
     page.close()
+
+@pytest.fixture
+def page_objects():
+    return PageObjects()
