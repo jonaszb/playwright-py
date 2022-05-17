@@ -16,7 +16,6 @@ def setup(page, page_objects):
     login_page = page_objects.login(page)
     login_page.navigate()
     yield page
-    page.close()
 
 
 def test_valid_login(setup, page_objects):
