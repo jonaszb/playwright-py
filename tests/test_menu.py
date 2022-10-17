@@ -1,7 +1,6 @@
 from playwright.sync_api import expect
 import pytest
 
-auth = pytest.users[1]
 test_data = ["/inventory.html", "/inventory-item.html?id=1", "/cart.html",
              "/checkout-step-one.html", "/checkout-step-two.html", "/checkout-complete.html"]
 menu_rows = ["ALL ITEMS", "LOGOUT", "ABOUT", "RESET APP STATE"]

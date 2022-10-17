@@ -2,8 +2,8 @@ from playwright.sync_api import expect
 import pytest
 import re
 
-auth = pytest.users[1]
-locked_out_auth = pytest.users[2]
+auth = pytest.users['standard']
+locked_out_auth = pytest.users['locked']
 # Test data for invalid login attempts: (username, password, expected_error)
 test_data = [("", "", "Epic sadface: Username is required"),
              (auth["username"], "", "Epic sadface: Password is required"),
