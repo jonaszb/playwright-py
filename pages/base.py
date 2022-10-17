@@ -12,6 +12,5 @@ class Base:
         self.facebook_social = page.locator("li.social_facebook a")
         self.twitter_social = page.locator("li.social_twitter a")
 
-
     def navigate(self, url=""):
         self.page.goto(f"{pytest.base_url}{url or self.url}")

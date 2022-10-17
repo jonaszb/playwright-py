@@ -10,4 +10,4 @@ class Menu(Base):
         self.close_icon = self.root_element.locator("#react-burger-cross-btn")
 
     def get_item_with_text(self, text):
-       return self.menu_items.filter(has_text=text) 
+        return self.menu_items.filter(has_text=text)
