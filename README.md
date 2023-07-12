@@ -1,6 +1,8 @@
 # playwright-py
+Small POC to assess the capabilities of Playwright with pytest
 
 ## Installation
+Depending on your system configuration, you might need to run the below commands as superuser
 1. `pip install -r requirements.txt` <br>
 2. `playwright install`
 
